@@ -1,4 +1,5 @@
 ﻿using DataStructuresAndAlgorithms.BInaryTree;
+using System;
 using static System.Console;
 
 namespace DataStructuresAndAlgorithms {
@@ -22,7 +23,27 @@ namespace DataStructuresAndAlgorithms {
                         tree.Insert(i);
                 }
 
-                tree.PrintLevelOrderTraversal(); 
+
+                ForegroundColor = ConsoleColor.Green;
+                WriteLine("Print pre order: root - left - right");
+                tree.PrintPreOrder();
+                WriteLine();
+
+                ForegroundColor = ConsoleColor.Red;
+                WriteLine("Print in order: left - root - right");
+                tree.PrintInOrder();
+                WriteLine();
+
+                ForegroundColor = ConsoleColor.Cyan;
+                WriteLine("Print post order: left - right - root");
+                tree.PrintPostOrder();
+                WriteLine();
+
+                ForegroundColor = ConsoleColor.Yellow;
+                WriteLine("Print level order");
+                tree.PrintLevelOrderTraversal();
+                WriteLine();
+                ResetColor();
             }
         }
     }

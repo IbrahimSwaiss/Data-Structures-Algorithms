@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using static System.Console;
 
@@ -31,17 +32,37 @@ namespace DataStructuresAndAlgorithms.BInaryTree {
             }
         }
 
+        /// <summary>
+        /// Print root - left - right
+        /// </summary>
         public static void PrintPreOrder(this BinaryTree tree) {
-            
+            if (tree == null) return;
+            Write($"{tree.Value} ");
+            PrintPreOrder(tree.Left);
+            PrintPreOrder(tree.Right);
         }
+
+        /// <summary>
+        /// Print left - root - right
+        /// </summary>
         public static void PrintInOrder(this BinaryTree tree) {
-            
+            if (tree == null) return;
+            PrintInOrder(tree.Left);
+            Write($"{tree.Value} ");
+            PrintInOrder(tree.Right);
         }
+
+        /// <summary>
+        /// Print left - right - root
+        /// </summary>
         public static void PrintPostOrder(this BinaryTree tree) {
-            
+            if (tree == null) return;
+            PrintPostOrder(tree.Left);
+            PrintPostOrder(tree.Right);
+            Write($"{tree.Value} ");
         }
+
         public static void PrintLevelOrderTraversal(this BinaryTree tree) {
-            ForegroundColor = System.ConsoleColor.Yellow;
             if (tree == null) {
                 WriteLine("Empty tree");
             } else {
@@ -55,11 +76,10 @@ namespace DataStructuresAndAlgorithms.BInaryTree {
                     if (node.Right != null)
                         queue.Enqueue(node.Right);
 
-                    WriteLine(node.Value);
+                    Write($"{node.Value} ");
                     queue.Dequeue();
                 }
             }
-            ResetColor();
         }
     }
 }
